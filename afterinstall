@@ -75,6 +75,5 @@ done
 if [ $# -eq 0 ];
 then
     install_myself
-    usage
     exit 0
 fi
