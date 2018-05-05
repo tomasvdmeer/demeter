@@ -37,10 +37,10 @@ update_code_local() {
     eval git pull
 }
 update_code_server() {
-    eval sudo cd $gitrepo
-    eval sudo git add .
-    eval sudo git commit -m "automated upload"
-    eval sudo git push origin master
+    cd ~/git/scripts
+    sudo git add .
+    sudo git commit -m "automated upload"
+    sudo git push origin master
 }
 install_myself() {
     if [ ! -f $myself ]; then
@@ -49,7 +49,7 @@ install_myself() {
         eval git clone https://github.com/tomasvdmeer/scripts
         eval cd $gitrepo
         eval chmod +x $gitrepo
-        eval echo "export PATH=$PATH:~/git/scripts" >> ~/.bashrc
+        # something went wrong here eval echo "export PATH=$PATH:~/git/scripts" >> ~/.bashrc
     else
         echo "File found! Going ahead..."
 fi
@@ -62,7 +62,7 @@ do
     case "${optchar}" in
         d) packages_desktop ;;
         s) packages_server ;;
-        u) update_codcd e_local ;;
+        u) update_code_local ;;
         v) update_code_server ;;
         c) install_myself ;;
         i) version ;;
