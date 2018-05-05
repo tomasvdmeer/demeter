@@ -1,0 +1,76 @@
+#!/bin/bash
+# Load config file
+userdir=~/
+gitdir=~/git
+gitrepo=~/git/scripts
+myself=~/git/scripts/afterinstall
+#source ~/git/scripts/afterinstall.conf
+
+# Parse arguments passed + help formatting
+version() {
+    echo "Version 0.1"
+}
+usage() {
+        echo "Usage 'radio -l [stationname]'"
+        echo "   -l [station] #starts radiostation"
+        echo ""
+        echo "Example:"
+        echo "   'radio -l veronica'  #starts radio veronica"
+        echo ""
+        echo "Other arguments:"
+        echo "   -v Gives current version"
+        echo "   -o Opens the configfile"
+        echo " "
+        echo " "
+        echo "The stations known by the config file:"
+}
+# Start radiostation
+packages_desktop() {
+    eval sudo apt-get install $packages_desktop -y
+}
+packages_server() {
+    eval sudo apt-get install $packages_server -y
+}
+update_code_local() {
+    eval cd $gitrepo
+    eval git pull
+}
+update_code_server() {
+    eval cd $gitrepo
+    eval git add .
+    eval git commit -m "automated upload"
+    eval git push origin master
+}
+install_myself() {
+    if [ ! -f $myself ]; then
+        eval mkdir $gitrepo
+        eval mkdir $gitdir
+        eval cd $gitrepo
+        eval chmod +x $myself
+        eval git clone https://github.com/tomasvdmeer/scripts
+    else
+        echo "File found! Going ahead..."
+fi
+}
+#########################################################################################################################
+# Option parsing "controller"    ---- getopts  l:  the ":" means it is followed by a argument
+optspec="ivo*"
+while getopts "$optspec" optchar
+do
+    case "${optchar}" in
+        d) packages_desktop ;;
+        s) packages_server ;;
+        u) update_code_local ;;
+        v) update_code_server ;;
+        v) version ;;
+        c) install_myself ;;
+        *) usage ;;
+    esac
+done
+# Makes radio command default to help screen for usability
+if [ $# -eq 0 ];
+then
+    install_myself
+    usage
+    exit 0
+fi
