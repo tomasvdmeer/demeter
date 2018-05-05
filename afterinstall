@@ -2,7 +2,7 @@
 # Load config file
 userdir=~/
 gitdir=~/git
-gitrepo="~/git/scripts"
+gitrepo=~/git/scripts
 myself=~/git/scripts/afterinstall
 #source ~/git/scripts/afterinstall.conf
 
@@ -33,11 +33,11 @@ packages_server() {
     eval sudo apt-get install $packages_server -y
 }
 update_code_local() {
-    eval cd $gitrepo
-    eval git pull
+    cd $gitrepo
+    git pull
 }
 update_code_server() {
-    cd ~/git/scripts
+    cd $gitrepo
     sudo git add .
     sudo git commit -m "automated upload"
     sudo git push origin master
