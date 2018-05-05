@@ -1,6 +1,6 @@
 #!/bin/bash
 # Load config file
-source ~/scripts/radio.conf
+source ~/git/scripts/radio.conf
 # Parse arguments passed + help formatting
 version() {
     echo "Version 0.1a"
@@ -63,7 +63,7 @@ given_stations() {
 }
 #########################################################################################################################
     userdir=~/
-    configfile=$userdir"/scripts/radio.conf"
+    configfile=$userdir"git/scripts/radio.conf"
 # Option parsing "controller"    ---- getopts  l:  the ":" means it is followed by a argument
 optspec="l:p:vo*"
 while getopts "$optspec" optchar

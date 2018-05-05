@@ -3,17 +3,17 @@
 userdir=~/
 gitdir=~/git
 gitrepo=~/git/scripts
-myself=~/git/scripts/afi
-configfile=~/git/scripts/afi.conf
-#source ~/git/scripts/afi.conf
+myself=~/git/scripts/afin
+configfile=~/git/scripts/afin.conf
+#source ~/git/scripts/afin.conf
 
 # Parse arguments passed + help formatting
 version() {
     echo "Version 0.1"
 }
 usage() {
-        echo "Usage:   'afi [parameter] [argument]'"
-        echo "example: 'afi     -i       desktop'"
+        echo "Usage:   'afin [parameter] [argument]'"
+        echo "example: 'afin    -i       desktop'"
         echo " "
         echo "                 '-i desktop' Install chain for desktops"
         echo "                 '-i server' Install chain for servers"
@@ -57,7 +57,7 @@ install_myself() {
         eval chmod +x $gitrepo
         # something went wrong here eval echo "export PATH=$PATH:~/git/scripts" >> ~/.bashrc
         make_arg
-        echo "Now you're able to use the app afterinstall in the terminal"
+        echo "Now you're able to use the app afin in the terminal"
         sleep 30s
     else
         usage
