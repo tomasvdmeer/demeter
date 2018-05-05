@@ -49,7 +49,7 @@ install_myself() {
         eval chmod +x $gitrepo
         # something went wrong here eval echo "export PATH=$PATH:~/git/scripts" >> ~/.bashrc
     else
-        echo "File found! Going ahead..."
+        usage
 fi
 }
 chmod_gitrepo() {
@@ -75,5 +75,6 @@ done
 if [ $# -eq 0 ];
 then
     install_myself
+    usage
     exit 0
 fi
