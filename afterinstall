@@ -4,6 +4,7 @@ userdir=~/
 gitdir=~/git
 gitrepo=~/git/scripts
 myself=~/git/scripts/afterinstall
+configfile=~/git/scripts/afterinstall.conf
 #source ~/git/scripts/afterinstall.conf
 
 # Parse arguments passed + help formatting
@@ -18,7 +19,8 @@ usage() {
         echo "            '-d' Sends all newly created code to the repository"
         echo "            '-e' Marks all scripts/codes on this computer as"
         echo "                 executeable"
-        echo "            '-f' Future"
+        echo "            '-f' Open the config file for package installation"
+        echo "                 automation (installchain)"
         echo "            '-g' Future"
 }
 # Start radiostation
@@ -56,9 +58,12 @@ chmod_gitrepo() {
     eval chmod +x $gitrepo
     echo "All scripts in '$gitrepo' are given executable rights."
 }
+openconfig() {
+    eval leafpad $configfile
+}
 #########################################################################################################################
 # Option parsing "controller"    ---- getopts  l:  the ":" means it is followed by a argument
-optspec="abcdez*"
+optspec="abcdefz*"
 while getopts "$optspec" optchar
 do
     case "${optchar}" in
@@ -67,6 +72,7 @@ do
         c) update_code_local ;;
         d) update_code_server ;;
         e) chmod_gitrepo ;;
+        f) openconfig ;;
         z) version ;;
         *) usage ;;
     esac
