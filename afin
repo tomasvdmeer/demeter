@@ -40,6 +40,7 @@ packages_server() {
 update_code_local() {
     cd $gitrepo
     git pull
+    chmod_gitrepo
 }
 update_code_server() {
     cd $gitrepo
@@ -54,7 +55,7 @@ install_myself() {
         eval cd $gitdir
         eval git clone https://github.com/tomasvdmeer/scripts
         eval cd $gitrepo
-        eval chmod +x $gitrepo
+        eval sudo chmod +x $gitrepo
         # something went wrong here eval echo "export PATH=$PATH:~/git/scripts" >> ~/.bashrc
         make_arg
         echo "Now you're able to use the app afin in the terminal"
@@ -64,7 +65,7 @@ install_myself() {
 fi
 }
 chmod_gitrepo() {
-    eval chmod +x $gitrepo
+    eval sudo chmod -R +x $gitrepo
     echo "All scripts in '$gitrepo' are given executable rights."
 }
 openconfig() {

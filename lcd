@@ -1,0 +1,4 @@
+#!/bin/bash
+# Load config file
+eval cd $1
+eval ls
