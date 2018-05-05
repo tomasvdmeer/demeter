@@ -13,11 +13,13 @@ version() {
 usage() {
         echo "Usage 'radio -a' installs all desktop packages from software-center"
         echo "            '-b' installs all server packages from software-center "
-        echo "            '-c' Updates all scripts/codes locally at this computer from the code repository"
+        echo "            '-c' Updates all scripts/codes locally at this computer"
+        echo "                 from the code repository"
         echo "            '-d' Sends all newly created code to the repository"
-        echo "            '-e' Marks all scripts/codes on this computer as executeable"
-        echo "            '-f' Future
-        echo "            '-g' Future
+        echo "            '-e' Marks all scripts/codes on this computer as"
+        echo "                 executeable"
+        echo "            '-f' Future"
+        echo "            '-g' Future"
 }
 # Start radiostation
 packages_desktop() {
