@@ -1,0 +1,83 @@
+#!/bin/bash
+# Load config file
+source ~/scripts/radio.conf
+# Parse arguments passed + help formatting
+version() {
+    echo "Version 0.1a"
+}
+usage() {
+        echo "Usage 'radio -l [stationname]'"
+        echo "   -l [station] #starts radiostation"
+        echo ""
+        echo "Example:"
+        echo "   'radio -l veronica'  #starts radio veronica"
+        echo ""
+        echo "Other arguments:"
+        echo "   -v Gives current version"
+        echo "   -o Opens the configfile"
+        echo " "
+        echo " "
+        echo "The stations known by the config file:"
+        given_stations
+}
+# Start radiostation
+startstation() {
+    stations_existence
+    if [ "$exists" == "$play" ]
+        then
+        checker='$'$exists
+        eval cvlc $checker
+        else
+        echo "The station called does not exist!"
+        echo " "
+        echo " "
+        fi
+}
+stations_existence() {
+    while IFS=: read -r linesinconfig
+    do
+        # display fields using f1, f2,..,f7  and everything before the "=" in the config file
+        #echo "$linesinconfig" | cut -f1 -d"="
+        # shorting the variable
+        shorted=$( echo "$linesinconfig" | cut -f1 -d"=" )
+        # matching the variable "==" mean if it contains. "-eq" mean it is exactly the same
+        if [ "$shorted" == "$play" ]
+        then
+        # ready to mark the existence of the station as exists.
+            exists=$play
+            # echo $exists
+        fi
+    done <"$configfile"
+}
+openconfig() {
+    eval leafpad $configfile
+}
+given_stations() {
+    echo " "
+    while IFS=: read -r linesinconfig
+    do
+        # display fields using f1, f2,..,f7
+        echo "$linesinconfig" | cut -f1 -d"="
+    done <"$configfile"
+    echo " "
+}
+#########################################################################################################################
+    userdir=~/
+    configfile=$userdir"/scripts/radio.conf"
+# Option parsing "controller"    ---- getopts  l:  the ":" means it is followed by a argument
+optspec="l:p:vo*"
+while getopts "$optspec" optchar
+do
+    case "${optchar}" in
+        l) play=$OPTARG startstation;;
+        v) version ;;
+        o) openconfig ;;
+        *) usage ;;
+    esac
+done
+# Makes radio command default to help screen for usability
+if [ $# -eq 0 ];
+then
+    usage
+    exit 0
+fi

@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Connecting to GAMBIT" >&2
+sudo ssh meine@gambit.local
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+source ~/scripts/autoinstall.conf
+    var1=$1
+    var2=$2
+if [ $var1 = "go" ]; then
+    
+    eval sudo apt-get install $packages -y
+    #eval $edit
+    else 
+    #eval cvlc $checker
+    echo There is gone something wrong!
+fi
