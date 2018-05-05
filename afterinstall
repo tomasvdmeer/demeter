@@ -11,18 +11,13 @@ version() {
     echo "Version 0.1"
 }
 usage() {
-        echo "Usage 'radio -l [stationname]'"
-        echo "   -l [station] #starts radiostation"
-        echo "test"
-        echo "Example:"
-        echo "   'radio -l veronica'  #starts radio veronica"
-        echo ""
-        echo "Other arguments:"
-        echo "   -v Gives current version"
-        echo "   -o Opens the configfile"
-        echo " "
-        echo " "
-        echo "The stations known by the config file:"
+        echo "Usage 'radio -a' installs all desktop packages from software-center"
+        echo "            '-b' installs all server packages from software-center "
+        echo "            '-c' Updates all scripts/codes locally at this computer from the code repository"
+        echo "            '-d' Sends all newly created code to the repository"
+        echo "            '-e' Marks all scripts/codes on this computer as executeable"
+        echo "            '-f' Future
+        echo "            '-g' Future
 }
 # Start radiostation
 packages_desktop() {
@@ -44,6 +39,7 @@ update_code_server() {
 }
 install_myself() {
     if [ ! -f $myself ]; then
+        sudo apt-get install git
         eval mkdir $gitdir
         eval cd $gitdir
         eval git clone https://github.com/tomasvdmeer/scripts
@@ -54,18 +50,22 @@ install_myself() {
         echo "File found! Going ahead..."
 fi
 }
+chmod_gitrepo() {
+    eval chmod +x $gitrepo
+    echo "All scripts in '$gitrepo' are given executable rights."
+}
 #########################################################################################################################
 # Option parsing "controller"    ---- getopts  l:  the ":" means it is followed by a argument
-optspec="dsuvci*"
+optspec="abcdez*"
 while getopts "$optspec" optchar
 do
     case "${optchar}" in
-        d) packages_desktop ;;
-        s) packages_server ;;
-        u) update_code_local ;;
-        v) update_code_server ;;
-        c) install_myself ;;
-        i) version ;;
+        a) packages_desktop ;;
+        b) packages_server ;;
+        c) update_code_local ;;
+        d) update_code_server ;;
+        e) chmod_gitrepo ;;
+        z) version ;;
         *) usage ;;
     esac
 done
