@@ -30,23 +30,37 @@ usage() {
         echo "                 '-v' Displays version number"
 }
 # Start radiostation
-packages_desktop() {
-    eval sudo apt-get install $packages_desktop -y
-    echo "installing packages for desktop"
+packages_install() {
+    if [ "$pckind" == "desktop" ]
+        then
+            eval sudo apt-get install $packages_desktop -y
+        elif [ "$pckind" == "server" ]
+        then
+            eval sudo apt-get install $packages_server -y
+        else
+            wrong_arg
+    fi
 }
-packages_server() {
-    eval sudo apt-get install $packages_server -y
+wrong_arg() {
+    echo "Not a correct argument given."
+    sleep 3s
+    usage
 }
-update_code_local() {
-    cd $gitrepo
-    git pull
-    chmod_gitrepo
-}
-update_code_server() {
-    cd $gitrepo
-    sudo git add .
-    sudo git commit -m "automated upload"
-    sudo git push origin master
+code_repo() {
+    if [ "$trans_type" == "update" ]
+        then
+            cd $gitrepo
+            git pull
+            chmod_gitrepo
+        elif [ "$trans_type" == "upload" ]
+        then
+            cd $gitrepo
+            sudo git add .
+            sudo git commit -m "automated upload"
+            sudo git push origin master
+        else
+            wrong_arg
+        fi
 }
 install_myself() {
     if [ ! -f $myself ]; then
@@ -84,17 +98,29 @@ make_arg() {
 }
 #########################################################################################################################
 # Option parsing "controller"    ---- getopts  l:  the ":" means it is followed by a argument
-optspec="abcdefgz*"
+#optspec="abcdefgz*"
+#while getopts "$optspec" optchar
+#do
+#    case "${optchar}" in
+#        i) packages;;
+#        b) packages ;;
+#        c) update_code_local ;;
+#        d) update_code_server ;;
+#        e) chmod_gitrepo ;;
+#        f) openconfig ;;
+##        z) version ;;
+#       *) usage ;;
+#    esac
+#done
+optspec="i:c:oev*"
 while getopts "$optspec" optchar
 do
     case "${optchar}" in
-        a) packages_desktop ;;
-        b) packages_server ;;
-        c) update_code_local ;;
-        d) update_code_server ;;
+        i) pckind=$OPTARG packages_install;;
+        c) trans_type=$OPTARG code_repo ;;
+        o) openconfig ;;
         e) chmod_gitrepo ;;
-        f) openconfig ;;
-        z) version ;;
+        v) version ;;
         *) usage ;;
     esac
 done
