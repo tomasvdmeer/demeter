@@ -1,7 +1,0 @@
-#!/bin/bash
-FILE=~/git/scripts/afterinstaddll     
-if [ ! -f $FILE ]; then
-    echo "File not found!"
-    else
-    echo "File found!"
-fi
