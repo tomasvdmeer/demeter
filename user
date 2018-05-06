@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ "$USER" == "tomas" ]
+        then
+            echo User is tomas
+        elif [ "$pckind" == "server" ]
+        then
+            sudo apt-get install $packages_server -y
+        else
+            wrong_arg
+    fi
