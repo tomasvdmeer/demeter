@@ -42,7 +42,7 @@ packages_install() {
     fi
 }
 wrong_arg() {
-    echo "Not a correct argument given."
+    echo "Not a correct argument given. Sleeping three seconds."
     sleep 3s
     usage
 }
@@ -51,6 +51,7 @@ code_repo() {
         then
             cd $gitrepo
             git pull
+            sleep 1s
             chmod_gitrepo
         elif [ "$trans_type" == "upload" ]
         then
@@ -96,22 +97,6 @@ make_arg() {
     eval echo "export PATH=$var_fname:~/git/scripts" >> $bashrcfile
     fi
 }
-#########################################################################################################################
-# Option parsing "controller"    ---- getopts  l:  the ":" means it is followed by a argument
-#optspec="abcdefgz*"
-#while getopts "$optspec" optchar
-#do
-#    case "${optchar}" in
-#        i) packages;;
-#        b) packages ;;
-#        c) update_code_local ;;
-#        d) update_code_server ;;
-#        e) chmod_gitrepo ;;
-#        f) openconfig ;;
-##        z) version ;;
-#       *) usage ;;
-#    esac
-#done
 optspec="i:c:oev*"
 while getopts "$optspec" optchar
 do
@@ -124,6 +109,7 @@ do
         *) usage ;;
     esac
 done
+################################################Start of the script##############################################
 if [ $# -eq 0 ];
 then
     install_myself
