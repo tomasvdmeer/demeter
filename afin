@@ -50,7 +50,7 @@ code_repo() {
     if [ "$trans_type" == "update" ]
         then
             cd $gitrepo
-            git pull
+            sudo git pull
             sleep 1s
             chmod_gitrepo
         elif [ "$trans_type" == "upload" ]
