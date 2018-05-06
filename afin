@@ -33,10 +33,10 @@ usage() {
 packages_install() {
     if [ "$pckind" == "desktop" ]
         then
-            eval sudo apt-get install $packages_desktop -y
+            sudo apt-get install $packages_desktop -y
         elif [ "$pckind" == "server" ]
         then
-            eval sudo apt-get install $packages_server -y
+            sudo apt-get install $packages_server -y
         else
             wrong_arg
     fi
