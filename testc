@@ -1,6 +1,8 @@
 #!/bin/bash
-sed_tag_conf() {
-    tag=entry1
-    sed -n "/<$tag>/,/<\/$tag>/p" ~/git/scripts/testc.conf
-}
-sed_tag_conf
+cd /
+if [ $? -ne 0 ]
+then
+    echo failed
+else
+    echo success!
+fi
