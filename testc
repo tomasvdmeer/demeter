@@ -1,0 +1,6 @@
+#!/bin/bash
+sed_tag_conf() {
+    tag=entry1
+    sed -n "/<$tag>/,/<\/$tag>/p" ~/git/scripts/testc.conf
+}
+sed_tag_conf
