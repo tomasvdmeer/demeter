@@ -79,6 +79,7 @@ install_myself() {
         # make_arg
         echo "Now you're able to use the app afin in the terminal"
         sleep 30s
+        make_arg
     else
         usage
 fi
@@ -91,19 +92,19 @@ openconfig() {
     eval leafpad $configfile
 }
 make_arg() {
-    var_name=(${!PATH@})
+    path1=(${!PATH@})
     var_fname=\$var_name
     bashrcfile=~/.bashrc
     if grep -o 'git/scripts' ~/.bashrc
     then
         echo "file is already up to date"
-        Sleep 30s
-        echo "export PATH=$\n$var_fname:~/git/scripts" >> $bashrcfile
-        echo "will exit in 30 sec. Done..."
+        sleep 1s
     else
-        echo "export PATH=$\n$var_fname:~/git/scripts" >> $bashrcfile
-        echo "will exit in 30 sec. Done..."
-        sleep 30s 
+        echo "export PATH=\$$path1:~/git/scripts" >> ~/.bashrc
+        echo "Argument directory set... exiting in 10 seconds"
+        echo ""
+        echo "Argument directory set... exiting in 10 seconds"
+        sleep 10s 
     fi
 }
 optspec="i:c:oeva*"
