@@ -20,8 +20,10 @@ usage() {
         echo "                 '-i desktop' Install chain for desktops"
         echo "                 '-i server' Install chain for servers"
         echo " "
-        echo "                 '-c update' Downloads all new available code"
-        echo "                     from the repository"
+        echo "                 '-b' to set the .bashrc file"
+        echo " "
+        echo "                 '-c update' Updates (AFIN)* all new available code"
+        echo "                     and instal sources from the repository"
         echo "                 '-c upload' Uploads all new available code"
         echo "                     to the repository"
         echo " "
@@ -30,15 +32,16 @@ usage() {
         echo "                 '-o' Opens the config file, for editting the"
         echo "                      install chain."
         echo "                 '-v' Displays version number"
-        echo "                 '-a' to set the .bashrc file"
 }
 # Start radiostation
 packages_install() {
     if [ "$pckind" == "desktop" ]
         then
+            sudo chmod +x $gitrepo
             eval afinupdate
         elif [ "$pckind" == "server" ]
         then
+            sudo chmod +x $gitrepo
             eval afinupdate
         else
             wrong_arg
@@ -107,7 +110,7 @@ make_arg() {
         sleep 10s 
     fi
 }
-optspec="i:c:oeva*"
+optspec="i:c:oevb*"
 while getopts "$optspec" optchar
 do
     case "${optchar}" in
@@ -116,7 +119,7 @@ do
         o) openconfig ;;
         e) chmod_gitrepo ;;
         v) version ;;
-        a) make_arg ;;
+        b) make_arg ;;
         *) usage ;;
     esac
 done
