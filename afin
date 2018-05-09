@@ -94,7 +94,7 @@ make_arg() {
     then
         echo "file is already up to date"
     else
-        echo "export PATH=\n$$var_fname:~/git/scripts" >> $bashrcfile
+        echo "export PATH=$\n$var_fname:~/git/scripts" >> $bashrcfile
         echo "will exit in 30 sec. Done..."
         sleep 30s 
     fi
