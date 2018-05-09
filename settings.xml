@@ -1,0 +1,94 @@
+<afin>  
+    <meine>
+          <installautomation>
+            <aptitudechain>vlc firefox nano leafpad</aptitudechain>
+          </installautomation>
+          <filesync>
+            <sync serverpath="/backups/home/$user" clientpath="/home/$user" interval="60m" manual="false">HOME</sync>
+            <sync serverpath="/backups/home/user/docs" clientpath="/home/$user/docs" interval="5m" manual="true">Docs</sync>    
+          </filesync>
+          <radio>
+            <decoder="clvc">
+            <station1= "htttp:/radio538.nl" argument="r538">
+            <station2= "htttp:/radio538.nl" argument="r10">
+            <station3= "">
+            <station4="">
+            <station5="">
+          </radio>
+    </meine>
+    <meine>
+          <installautomation>
+            <aptitudechain>vlc firefox nano leafpad</aptitudechain>
+          </installautomation>
+          <filesync>
+            <sync serverpath="/backups/home/$user" clientpath="/home/$user" interval="60m" manual="false">HOME</sync>
+            <sync serverpath="/backups/home/user/docs" clientpath="/home/$user/docs" interval="5m" manual="true">Docs</sync>    
+          </filesync>
+          <radio>
+            <decoder="clvc">
+            <station1= "htttp:/radio538.nl" argument="r538">
+            <station2= "htttp:/radio538.nl" argument="r10">
+            <station3= "">
+            <station4="">
+            <station5="">
+          </radio>
+    </meine>
+        <meine>
+          <installautomation>
+            <aptitudechain>vlc firefox nano leafpad</aptitudechain>
+          </installautomation>
+          <filesync>
+            <sync serverpath="/backups/home/$user" clientpath="/home/$user" interval="60m" manual="false">HOME</sync>
+            <sync serverpath="/backups/home/user/docs" clientpath="/home/$user/docs" interval="5m" manual="true">Docs</sync>    
+          </filesync>
+          <radio>
+            <decoder="clvc">
+            <station1= "htttp:/radio538.nl" argument="r538">
+            <station2= "htttp:/radio538.nl" argument="r10">
+            <station3= "">
+            <station4="">
+            <station5="">
+          </radio>
+    </meine>
+</afin>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<afin>
+        <radio>
+              <user="meine">
+                   <decoder="clvc">
+                  <station1= "htttp:/radio538.nl">r538</station1>
+                  <station2= "htttp:/radio538.nl">r10</station2>
+                  <station3= "htttp:/radio538.nl">wstad</station3>
+                  <decoder="clvc">
+                  <station1= "htttp:/radio538.nl">r538</station1>
+                  <station2= "htttp:/radio538.nl">r10</station2>
+                  <station3= "htttp:/radio538.nl">wstad</station3>
+              </user>
+              <user="tomas">
+                   <decoder="clvc">
+                  <station1= "htttp:/radio538.nl">r538</station1>
+                  <station2= "htttp:/radio538.nl">r10</station2>
+                  <station3= "htttp:/radio538.nl">wstad</station3>
+                  <decoder="clvc">
+                  <station1= "htttp:/radio538.nl">r538</station1>
+                  <station2= "htttp:/radio538.nl">r10</station2>
+                  <station3= "htttp:/radio538.nl">wstad</station3>
+              </user>
+        </radio>
+</afin>
+    
