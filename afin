@@ -81,7 +81,8 @@ install_myself() {
         # something went wrong here eval echo "export PATH=$PATH:~/git/scripts" >> ~/.bashrc
         # make_arg
         echo "Now you're able to use the app afin in the terminal"
-        sleep 30s
+        echo "Setting up environment variables for the root of AFIN"
+        sleep 5s
         make_arg
     else
         usage
@@ -101,13 +102,13 @@ make_arg() {
     if grep -o 'git/scripts' ~/.bashrc
     then
         echo "file is already up to date"
-        sleep 1s
+        sleep 5s
     else
         echo "export PATH=\$$path1:~/git/scripts" >> ~/.bashrc
         echo "Argument directory set... exiting in 10 seconds"
         echo ""
         echo "Argument directory set... exiting in 10 seconds"
-        sleep 10s 
+        sleep 5s 
     fi
 }
 optspec="i:c:oevb*"
