@@ -11,8 +11,8 @@ source ~/git/scripts/afin.conf
             echo ""
             echo ""
             echo ""
-            echo "INSTALLATION OF THE INSTALL CHAIN DONE"
-            echo "UPDATING DONE"
+            echo "INSTALLATION DONE!"
+            echo ""
             echo "Exit in 5 seconds..."
             echo ""
             sleep 10s
