@@ -33,10 +33,12 @@ usage() {
 packages_install() {
     if [ "$pckind" == "desktop" ]
         then
+            sudo apt-get update
             sudo apt-get install $packages_desktop -y
             sudo apt-get update
         elif [ "$pckind" == "server" ]
         then
+            sudo apt-get update
             sudo apt-get install $packages_server -y
             sudo apt-get update
         else
