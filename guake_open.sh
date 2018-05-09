@@ -42,7 +42,7 @@ user_bolleke() {
 user_tomas() {
     guake -r "Glances" -e "glances"
     guake -n " " -r "Ping" -e "ping www.google.nl"
-    guake -n " " -r "WstadFM" -e "radio -l wstad"
+    guake -n " " -r "r10" -e "radio -l wstad"
     guake -n " " -r "p2000" -e "rsstail -u http://feeds.feedburner.com/p2000-regio-friesland -t"
     guake -n " " -r "NEW" -e ""
     guake -n " " -r "NEW" -e ""

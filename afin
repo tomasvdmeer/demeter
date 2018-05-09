@@ -94,7 +94,9 @@ make_arg() {
     then
         echo "file is already up to date"
     else
-    eval echo "export PATH=$var_fname:~/git/scripts" >> $bashrcfile
+        echo "export PATH=\n$$var_fname:~/git/scripts" >> $bashrcfile
+        echo "will exit in 30 sec. Done..."
+        sleep 30s 
     fi
 }
 optspec="i:c:oev*"
