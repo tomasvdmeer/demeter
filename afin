@@ -6,6 +6,8 @@ gitrepo=~/git/scripts
 myself=~/git/scripts/afin
 configfile=~/git/scripts/afin.conf
 source ~/git/scripts/afin.conf
+bashrcfile =~/.bashrc
+
 
 # Parse arguments passed + help formatting
 version() {
@@ -28,19 +30,16 @@ usage() {
         echo "                 '-o' Opens the config file, for editting the"
         echo "                      install chain."
         echo "                 '-v' Displays version number"
+        echo "                 '-a' to set the .bashrc file"
 }
 # Start radiostation
 packages_install() {
     if [ "$pckind" == "desktop" ]
         then
-            sudo apt-get update
-            sudo apt-get install $packages_desktop -y
-            sudo apt-get update
+            eval afinupdate
         elif [ "$pckind" == "server" ]
         then
-            sudo apt-get update
-            sudo apt-get install $packages_server -y
-            sudo apt-get update
+            eval afinupdate
         else
             wrong_arg
     fi
@@ -75,8 +74,9 @@ install_myself() {
         eval git clone https://github.com/tomasvdmeer/scripts
         eval cd $gitrepo
         eval sudo chmod +x $gitrepo
+
         # something went wrong here eval echo "export PATH=$PATH:~/git/scripts" >> ~/.bashrc
-        make_arg
+        # make_arg
         echo "Now you're able to use the app afin in the terminal"
         sleep 30s
     else
@@ -94,16 +94,19 @@ make_arg() {
     var_name=(${!PATH@})
     var_fname=\$var_name
     bashrcfile=~/.bashrc
-    if grep -o 'git/scripts' $bashrcfile 
+    if grep -o 'git/scripts' ~/.bashrc
     then
         echo "file is already up to date"
+        Sleep 30s
+        echo "export PATH=$\n$var_fname:~/git/scripts" >> $bashrcfile
+        echo "will exit in 30 sec. Done..."
     else
         echo "export PATH=$\n$var_fname:~/git/scripts" >> $bashrcfile
         echo "will exit in 30 sec. Done..."
         sleep 30s 
     fi
 }
-optspec="i:c:oev*"
+optspec="i:c:oeva*"
 while getopts "$optspec" optchar
 do
     case "${optchar}" in
@@ -112,6 +115,7 @@ do
         o) openconfig ;;
         e) chmod_gitrepo ;;
         v) version ;;
+        a) make_arg ;;
         *) usage ;;
     esac
 done

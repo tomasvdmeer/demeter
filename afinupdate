@@ -1,0 +1,19 @@
+#!/bin/bash
+source ~/git/scripts/afin.conf
+            eval afin -c update
+            sudo apt-get update
+            sudo apt-get install $packages_server -y
+            sudo apt-get update
+            echo ""
+            echo ""
+            echo ""
+            echo ""
+            echo ""
+            echo ""
+            echo ""
+            echo ""
+            echo "INSTALLATION OF THE INSTALL CHAIN DONE"
+            echo "UPDATING DONE"
+            echo "Exit in 5 seconds..."
+            echo ""
+            sleep 10s
