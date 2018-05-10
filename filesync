@@ -1,0 +1,5 @@
+#!/bin/bash
+eval rsync -auv /media/bolleke/meine_disk/voorbeeld/* /media/bolleke/OS_backups/voorbeeld
+eval rsync -auv /media/bolleke/OS_backups/voorbeeld/* /media/bolleke/meine_disk/voorbeeld
+echo "waited 5 secs to check again"
+
