@@ -6,7 +6,7 @@ gitrepo=~/git/scripts
 myself=~/git/scripts/afin
 configfile=~/git/scripts/afin.conf
 source ~/git/scripts/afin.conf
-bashrcfile =~/.bashrc
+bashrcfile=~/.bashrc
 
 
 # Parse arguments passed + help formatting
