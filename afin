@@ -105,7 +105,8 @@ make_arg() {
         sleep 5s
     else
         echo "export PATH=\$$path1:~/git/scripts" >> ~/.bashrc
-        echo "Argument directory set... exiting in 10 seconds"
+        echo "eval ~/git/scripts/motd" >> ~/.bashrc
+        echo "Argument directory * MOTD are set... exiting in 10 seconds"
         echo ""
         echo "Argument directory set... exiting in 10 seconds"
         sleep 5s 
